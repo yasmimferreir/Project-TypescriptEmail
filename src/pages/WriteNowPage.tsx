@@ -27,13 +27,13 @@ export function WriteNowPage() {
             <input {...register('destinationAddress')} type="text" />
 
             <label htmlFor="dueData">Data</label>
-            <DateTimePicker />
+            <DateTimePicker name="dueDate"/>
 
             <label htmlFor="subject">Assunto</label>
             <input {...register('subject')} type="text" />
 
             <label htmlFor="body">Mensagem</label>
-            <RichInput />
+            <RichInput name="body"/>
 
             <Button type="submit" variant="primary">
               Enviar

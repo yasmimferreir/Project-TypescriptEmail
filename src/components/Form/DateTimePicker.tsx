@@ -6,18 +6,18 @@ type Props = {
     name: string;
 }
 
-export function DateTimePicker{ name }: Props) {
+export function DateTimePicker({ name }: Props) {
   const { control } = useFormContext();
-
   return (
-   <Controller>
-    name={name}
+   <Controller
+     name={name}
       control={control}
-      render={({ field: {onChange, value}}) => (
+      render={({ field: {onChange, value} }) => (
         <DatePicker
-        selected={value} 
-        onChange={(date: Date) => onChange(date.toISOString())} />
+        selected={value}
+        onChange={(date: Date) => onChange(date)} 
+        />
       )}
-      </Controller>
+    />
   );
 }
