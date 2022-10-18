@@ -1,9 +1,10 @@
 import { Button, DateTimePicker, Nav, RichInput } from 'components';
 import { FormProvider, useForm } from 'react-hook-form';
+import { WriteNowResolver } from 'validations';
 
 export function WriteNowPage() {
-  const FormMethods = useForm();
-  const { register, handleSubmit } = FormMethods;
+  const FormMethods = useForm<IWriteNowForm>({ resolver: WriteNowResolver });
+  const { formState: {errors}, register, handleSubmit } = FormMethods;
 
   function onSubimt(values: any) {
     console.log(
@@ -22,6 +23,10 @@ export function WriteNowPage() {
           <form className="form" onSubmit={handleSubmit(onSubimt)}>
             <label htmlFor="destinationName">Nome completo</label>
             <input {...register('destinationName')} type="text" />
+
+            {errors?.destionationName?.message && ( 
+            <p className="error-text">{errors?.destionationName?.message}</p>
+            )}
 
             <label htmlFor="destinationAddress">E-mail</label>
             <input {...register('destinationAddress')} type="text" />
